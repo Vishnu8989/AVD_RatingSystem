@@ -17,21 +17,14 @@ on:
     branches: [ "develop" ]
 
 jobs:
-  submit-dependency-snapshot:
+       
+  build:
+
     runs-on: ubuntu-latest
     permissions:
       contents: write
       packages: write
       security-events: write
-    steps:
-      - uses: actions/checkout@v3
-      - name: Submit dependency snapshot
-        uses: github/dependency-submission-action@v2
-        
-  build:
-
-    runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21

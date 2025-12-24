@@ -8,12 +8,7 @@
 
 
 
-name: Java CI with Maven
-
-permissions:
-  contents: write          # For general repo access
-  packages: write          # For dependency packages
-  security-events: write 
+name: Java CI with Maven 
 
 on:
   push:
@@ -22,6 +17,17 @@ on:
     branches: [ "develop" ]
 
 jobs:
+  submit-dependency-snapshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      security-events: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Submit dependency snapshot
+        uses: github/dependency-submission-action@v2
+        
   build:
 
     runs-on: ubuntu-latest
